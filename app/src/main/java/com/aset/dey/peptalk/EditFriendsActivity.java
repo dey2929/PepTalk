@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 
 public class EditFriendsActivity extends ActionBarActivity {
 
@@ -12,6 +15,14 @@ public class EditFriendsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_friends);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.orderByAscending(ParseConstants.KEY_USERNAME);//arranges user by ascending order
+        query.setLimit(1000);
     }
 
     @Override
