@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -24,6 +25,7 @@ public class SignUpActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
         mUsername = (EditText)findViewById(R.id.SignUpUsernameField);
         mPassword = (EditText)findViewById(R.id.SignUpPasswordField);
@@ -48,6 +50,7 @@ public class SignUpActivity extends ActionBarActivity {
                     Dialog.show();
 
                 } else {
+                    setProgressBarIndeterminateVisibility(true);
                     ParseUser newUser = new ParseUser();//using parse api
                     newUser.setUsername(Username);
                     newUser.setPassword(Password);
@@ -55,6 +58,7 @@ public class SignUpActivity extends ActionBarActivity {
                     newUser.signUpInBackground(new SignUpCallback() {//callback is used for the backend to ping us when it has processed the data
                         @Override
                         public void done(ParseException e) {//done method refers to when the data is processed by the backend
+                            setProgressBarIndeterminateVisibility(false);
                             if (e == null) {
                                 //success!
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);

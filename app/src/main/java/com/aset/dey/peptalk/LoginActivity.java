@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_login);
         mSignUpTextView = (TextView)findViewById(R.id.signuptext);
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {//what happens when we click sign up text
@@ -59,10 +61,12 @@ public class LoginActivity extends ActionBarActivity {
                         AlertDialog Dialog = builder.create();
                         Dialog.show();//Gives an alert dialog with ok as an option
                     }
-                } else {
+                } else {//login
+                    setProgressBarIndeterminateVisibility(true);
                     ParseUser.logInInBackground(Username, Password, new LogInCallback() {
                         @Override
                         public void done(ParseUser User, ParseException e) {
+                            setProgressBarIndeterminateVisibility(false);
                             if (User != null) {
                                 //Success in logging in (null means we have a valid user)
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
