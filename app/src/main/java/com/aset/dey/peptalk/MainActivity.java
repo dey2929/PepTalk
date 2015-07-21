@@ -111,7 +111,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int itemId = item.getItemId();
         if (itemId == R.id.action_logout)
         {
