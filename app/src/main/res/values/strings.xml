@@ -27,5 +27,20 @@
     <string name="EditFriendsLabel">Edit Friends</string>
     <string name="title_activity_edit_friends">EditFriendsActivity</string>
     <string name="ErrorTitle">We\'re Sorry!</string>
+    <string name="action_camera">Camera</string>
+    <string-array name="camera_choices">
+        <item>Take Photo</item>
+        <item>Take Video</item>
+        <item>Choose Photo</item>
+        <item>Choose Video</item>
+    </string-array>
+    <string name="error_external_storage">"There was a problem accessing your device's external storage"</string>
+    <string name="general_error">"Sorry there was an Error !"</string>
+    <string name="VideoError">"Selected Video should be less than 10 MB"</string>
+    <string name="errorOpeningFile">There was an error with the selected file</string>
+    <string name="FileTooLong">"File selected is too long</string>
+    <string name="title_activity_recipients">RecipientsActivity</string>
+    <string name="ChooseFriends">"Choose some friends first!"</string>
+    <string name="MessageSend">"Send"</string>
 
 </resources>
