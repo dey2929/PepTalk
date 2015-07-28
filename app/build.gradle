@@ -27,5 +27,6 @@ dependencies {
         compile 'com.parse.bolts:bolts-android:1.+'
         compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     }
+    compile files('C:/Users/dey/AndroidStudioProjects/PepTalk2/libs/commons-io-2.4.jar')
 }
 

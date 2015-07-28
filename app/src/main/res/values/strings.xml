@@ -42,5 +42,9 @@
     <string name="title_activity_recipients">RecipientsActivity</string>
     <string name="ChooseFriends">"Choose some friends first!"</string>
     <string name="MessageSend">"Send"</string>
+    <string name="error_selecting_file">"There was an error with the file selected.Please select another file"</string>
+    <string name="error_selecting_file_title">We\'re Sorry !</string>
+    <string name="success_message">"Message Sent!"</string>
+    <string name="error_sending_message">"There was an error sendin your message. Please try again!"</string>
 
 </resources>

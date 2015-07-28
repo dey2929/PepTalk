@@ -8,6 +8,7 @@ import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.AlertDialog;
@@ -32,10 +33,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 
@@ -48,7 +53,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public static final int MEDIA_TYPE_IMAGE = 4;
     public static final int MEDIA_TYPE_VIDEO = 5;
     public static final int FILE_SIZE_LIMIT=1024*1024*10;//Converting bytes to MB
+
     protected Uri mMediaUri; //Uri=uniform resource identifier-used to identify file types in storage
+
     protected DialogInterface.OnClickListener mDialogListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
@@ -126,7 +133,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             }
             else if (mediaType == MEDIA_TYPE_VIDEO)
             {
-                mediaFile=new File(path+"VID_"+timestamp+".jpg");
+                mediaFile=new File(path+"VID_"+timestamp+".mp4");
             }
             else
             {
@@ -225,6 +232,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {//after a photo or video is selected we end up in this activity
 
@@ -290,6 +298,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             }
             Intent RecipientsIntent = new Intent(this,RecipientsActivity.class);
             RecipientsIntent.setData(mMediaUri);//uri is passed with the intent
+            String fileType;
+            if(requestCode==PICK_PHOTO_REQUEST||requestCode==PICK_VIDEO_REQUEST)
+            {
+                fileType = ParseConstants.TYPE_IMAGE;
+            }
+            else
+            {
+                fileType = ParseConstants.TYPE_VIDEO;
+            }
+            RecipientsIntent.putExtra(ParseConstants.KEY_FILE_TYPE,fileType);
             startActivity(RecipientsIntent);
         }
         else if(resultCode!=RESULT_CANCELED)

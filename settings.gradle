@@ -1,1 +1,1 @@
-include ':app', ':Parse-1.9.2', ':bolts-android-1.2.0', ':android-support-v7-appcompat'
+include ':app', ':Parse-1.9.2', ':bolts-android-1.2.0', ':android-support-v7-appcompat', ':commons-io-2.4'
