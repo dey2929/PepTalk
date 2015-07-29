@@ -46,5 +46,6 @@
     <string name="error_selecting_file_title">We\'re Sorry !</string>
     <string name="success_message">"Message Sent!"</string>
     <string name="error_sending_message">"There was an error sendin your message. Please try again!"</string>
+    <string name="title_activity_view_image">PepTalk</string>
 
 </resources>

@@ -28,5 +28,6 @@ dependencies {
         compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     }
     compile files('C:/Users/dey/AndroidStudioProjects/PepTalk2/libs/commons-io-2.4.jar')
+    compile files('C:/Users/dey/AndroidStudioProjects/PepTalk2/libs/picasso-2.5.2.jar')
 }
 
