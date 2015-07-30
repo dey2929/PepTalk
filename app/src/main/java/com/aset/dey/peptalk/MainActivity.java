@@ -12,11 +12,16 @@ import java.util.List;
 import java.util.Locale;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -99,7 +104,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     Intent ChooseVideoIntent = new Intent(Intent.ACTION_GET_CONTENT);
                     ChooseVideoIntent.setType("video/*");
                     Toast.makeText(MainActivity.this,R.string.VideoError,Toast.LENGTH_LONG).show();
-                    startActivityForResult(ChooseVideoIntent, PICK_PHOTO_REQUEST);
+                    startActivityForResult(ChooseVideoIntent, PICK_VIDEO_REQUEST);
                     break;
             }
         }
@@ -183,11 +188,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);//from here
 
-        setContentView(R.layout.activity_main);
+        ActionBar bar = getSupportActionBar();//till here
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5298FC")));
+        bar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#5298FC")));
 
         ParseAnalytics.trackAppOpened(getIntent());
-
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser == null) {
             navigateToLogin();
@@ -199,6 +206,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
+
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Create the adapter that will return a fragment for each of the three
@@ -299,7 +307,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             Intent RecipientsIntent = new Intent(this,RecipientsActivity.class);
             RecipientsIntent.setData(mMediaUri);//uri is passed with the intent
             String fileType;
-            if(requestCode==PICK_PHOTO_REQUEST||requestCode==PICK_VIDEO_REQUEST)
+            if(requestCode==PICK_PHOTO_REQUEST)//||requestCode==PICK_VIDEO_REQUEST
             {
                 fileType = ParseConstants.TYPE_IMAGE;
             }
@@ -354,6 +362,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 builder.setItems(R.array.camera_choices, mDialogListener);//mDialogListener is the method above
                 AlertDialog dialog = builder.create();
                 dialog.show();
+                break;
+            case R.id.action_refresh:
+                Intent refresh = getIntent();
+                finish();
+                refresh.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(refresh);
                 break;
         }
 

@@ -4,6 +4,8 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -47,7 +49,8 @@ public class RecipientsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_recipients);
-
+        ActionBar bar = getActionBar();//test
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5298FC")));
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         mMediaUri = getIntent().getData();

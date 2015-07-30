@@ -1,5 +1,6 @@
 package com.aset.dey.peptalk;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -16,7 +17,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
-public class SignUpActivity extends ActionBarActivity {
+public class SignUpActivity extends Activity {
     protected EditText mUsername;
     protected EditText mPassword;
     protected EditText mEmail;
@@ -25,7 +26,7 @@ public class SignUpActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        //supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
         mUsername = (EditText)findViewById(R.id.SignUpUsernameField);
         mPassword = (EditText)findViewById(R.id.SignUpPasswordField);
