@@ -47,5 +47,6 @@
     <string name="success_message">"Message Sent!"</string>
     <string name="error_sending_message">"There was an error sendin your message. Please try again!"</string>
     <string name="title_activity_view_image">PepTalk</string>
+    <string name="title_activity_splash">splashActivity</string>
 
 </resources>

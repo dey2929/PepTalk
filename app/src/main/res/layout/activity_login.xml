@@ -1,10 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.aset.dey.peptalk.LoginActivity">
+    tools:context="com.aset.dey.peptalk.LoginActivity"
+    android:background="#ff5a8cff">
 
     <EditText
         android:layout_width="match_parent"
@@ -13,9 +16,14 @@
         android:ems="10"
         android:id="@+id/LoginUsername"
         android:hint="@string/Username"
-        android:layout_above="@+id/LoginPassword"
+        android:background="#5298FC"
+        android:padding="15dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="27dp" />
+        android:layout_marginTop="61dp"
+        android:textColorHint="#FFFFFF"
+        android:textIsSelectable="false"
+        android:textColor="#FFFFFF" />
     <requestFocus />
 
     />
@@ -26,10 +34,13 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/LoginPassword"
-
+        android:padding="15dp"
         android:hint="@string/PasswordField"
-        android:layout_above="@+id/Loginbutton"
-        android:layout_centerHorizontal="true" />
+        android:background="#5298FC"
+        android:layout_below="@+id/LoginUsername"
+        android:layout_alignParentEnd="true"
+        android:textColorHint="#ffffffff"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,8 +49,9 @@
         android:id="@+id/Loginbutton"
         android:background="#3399ff"
         android:textColor="#ffffff"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/LoginPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +59,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Sign Up !"
         android:id="@+id/signuptext"
-
+android:textColor="#ffffff"
         android:layout_marginTop="70dp"
         android:layout_below="@+id/Loginbutton"
         android:layout_centerHorizontal="true" />

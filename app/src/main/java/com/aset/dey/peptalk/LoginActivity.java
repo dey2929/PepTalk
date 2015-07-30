@@ -29,6 +29,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_login);
+
         mSignUpTextView = (TextView)findViewById(R.id.signuptext);
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {//what happens when we click sign up text
             @Override

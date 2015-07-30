@@ -10,16 +10,29 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class ViewImageActivity extends ActionBarActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_image);
         ImageView imageView = (ImageView)findViewById(R.id.imageView);
         Uri imageUri = getIntent().getData();
         Picasso.with(this).load(imageUri.toString()).into(imageView);//picasso loads the image from the url online to the imageview we created
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask()
+        {//to return to mainActivity afer 10 seconds
+            @Override
+            public void run()
+            {
+                finish();
+            }
+        }, 10 * 1000);
     }
 
 

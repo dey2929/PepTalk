@@ -342,16 +342,19 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
                 ParseUser.logOut();
                 navigateToLogin();
+                break;
 
             case R.id.action_edit_friends:
 
                 Intent intent = new Intent(this, EditFriendsActivity.class);
                 startActivity(intent);
+                break;
             case R.id.action_camera://options when we tap on camera
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setItems(R.array.camera_choices, mDialogListener);//mDialogListener is the method above
                 AlertDialog dialog = builder.create();
                 dialog.show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
